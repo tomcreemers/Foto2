@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Foto2.Pages.EditUserDetailsPage"
+             Title="Edit Profile">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <!-- Profile Picture -->
+            <Image Source="{Binding ProfilePicturePath}" 
+                   HeightRequest="150" WidthRequest="150" 
+                   HorizontalOptions="Center" 
+                   Aspect="AspectFill" />
+            <Button Text="Change Profile Picture" 
+                    Command="{Binding ChangeProfilePictureCommand}" />
+
+            <!-- Username -->
+            <Label Text="Username:" FontSize="Medium" />
+            <Entry Text="{Binding Username}" Placeholder="Enter your username" />
+
+            <!-- Email -->
+            <Label Text="Email:" FontSize="Medium" />
+            <Entry Text="{Binding Email}" Placeholder="Enter your email" Keyboard="Email" />
+
+            <!-- Save Button -->
+            <Button Text="Save Changes" 
+                    Command="{Binding SaveChangesCommand}" 
+                    BackgroundColor="Purple" 
+                    TextColor="White" />
+
+            <!-- Cancel Button -->
+            <Button Text="Cancel" 
+                    Clicked="OnCancelClicked" 
+                    BackgroundColor="Gray" 
+                    TextColor="White" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

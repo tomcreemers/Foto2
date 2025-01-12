@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Foto2.Converters"
+             x:Class="Foto2.Pages.AIChatPage"
+             Title="Picture Helper">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToHorizontalOptionsConverter x:Key="BooleanToHorizontalOptionsConverter" />
+            <converters:BooleanToColorConverter x:Key="BooleanToColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" /> <!-- Chat messages -->
+            <RowDefinition Height="Auto" /> <!-- Input section -->
+        </Grid.RowDefinitions>
+
+        <!-- Chat Messages -->
+        <CollectionView Grid.Row="0"
+                        ItemsSource="{Binding Messages}"
+                        Margin="10"
+                        VerticalOptions="FillAndExpand"
+                        BackgroundColor="White">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="{Binding IsUser, Converter={StaticResource BooleanToHorizontalOptionsConverter}}">
+                        <Frame Padding="10"
+                               Margin="5"
+                               CornerRadius="10"
+                               BackgroundColor="{Binding IsUser, Converter={StaticResource BooleanToColorConverter}}">
+                            <Label Text="{Binding Text}"
+                                   LineBreakMode="WordWrap"
+                                   TextColor="Black" />
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Input Section -->
+        <Grid Grid.Row="1" Padding="10" BackgroundColor="LightGray">
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Entry x:Name="PromptEntry"
+                       Placeholder="Ask the Picture Helper..."
+                       HorizontalOptions="FillAndExpand" />
+                <Button Text="Send"
+                        Command="{Binding SendPromptCommand}"
+                        CommandParameter="{Binding Source={x:Reference PromptEntry}, Path=Text}" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

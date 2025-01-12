@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Foto2.Pages.LoginPage"
+             Title="Login"
+             BackgroundColor="Black">
+    <Grid>
+        <!-- Achtergrondafbeelding -->
+        <Image Source="loginregistrationbackground.png"
+               Aspect="AspectFill"
+               Opacity="0.6"
+               IsVisible="True" />
+
+        <!-- Fallback kleur -->
+        <BoxView Color="DarkBlue" Opacity="0.5" />
+
+        <!-- Inhoud -->
+        <ScrollView>
+            <StackLayout Padding="30" VerticalOptions="Center" Spacing="20">
+                <!-- Titel -->
+                <Label Text="Welcome to Galleries!" 
+                       FontFamily="MontserratBold" 
+                       FontSize="32" 
+                       TextColor="White" 
+                       HorizontalTextAlignment="Center" />
+
+                <!-- Username -->
+                <Frame BackgroundColor="White" 
+                       CornerRadius="10" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <Entry x:Name="UsernameEntry" 
+                           Placeholder="Username" 
+                           FontFamily="OpenSansRegular"
+                           TextColor="Black" 
+                           BackgroundColor="Transparent" />
+                </Frame>
+
+                <!-- Password -->
+                <Frame BackgroundColor="White" 
+                       CornerRadius="10" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <Entry x:Name="PasswordEntry" 
+                           Placeholder="Password" 
+                           IsPassword="True" 
+                           FontFamily="OpenSansRegular"
+                           TextColor="Black" 
+                           BackgroundColor="Transparent" />
+                </Frame>
+
+                <!-- Login Button -->
+                <Button Text="Login" 
+                        Clicked="OnLoginClicked" 
+                        FontFamily="MontserratBold" 
+                        BackgroundColor="DarkBlue" 
+                        TextColor="White" 
+                        CornerRadius="20" 
+                        Padding="15" />
+
+                <!-- Register Button -->
+                <Button Text="Register" 
+                        Clicked="OnRegisterClicked" 
+                        FontFamily="MontserratBold" 
+                        BackgroundColor="White" 
+                        TextColor="DarkBlue" 
+                        BorderColor="DarkBlue" 
+                        BorderWidth="1" 
+                        CornerRadius="20" 
+                        Padding="15" />
+
+                <!-- Continue as Guest -->
+                <Button Text="Continue as Guest" 
+                        Clicked="OnGuestClicked" 
+                        FontFamily="RobotoItalic" 
+                        BackgroundColor="Transparent" 
+                        TextColor="White" 
+                        Padding="10" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

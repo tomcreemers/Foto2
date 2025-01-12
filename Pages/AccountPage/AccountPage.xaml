@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Foto2.Pages.AccountPage"
+             Title="Account">
+    <Grid>
+        <!-- Layout -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" /> <!-- Scrollable content -->
+            <RowDefinition Height="70" /> <!-- Fixed buttons -->
+        </Grid.RowDefinitions>
+
+        <!-- User Information -->
+        <ScrollView Grid.Row="0" Padding="20">
+            <StackLayout>
+                <!-- Profile Picture -->
+                <Image Source="{Binding ProfilePicturePath}" 
+                       HeightRequest="150" WidthRequest="150" 
+                       HorizontalOptions="Center" 
+                       Aspect="AspectFill" />
+
+                <!-- User Info -->
+                <Label Text="{Binding Username}" 
+                       FontSize="Large" 
+                       HorizontalOptions="Center" 
+                       Margin="0,10,0,0" />
+                <Label Text="{Binding Email}" 
+                       FontSize="Medium" 
+                       HorizontalOptions="Center" />
+
+                <!-- Edit Button -->
+                <Button Text="Edit Profile" 
+                        Clicked="OnEditProfileClicked" 
+                        Margin="0,20,0,0" />
+
+                <Button Text="Go to Shop" 
+                        Clicked="OnShopClicked" 
+                        BackgroundColor="Purple" 
+                        TextColor="White" 
+                        Margin="0,20,0,0" />
+
+                <Button Text="AI Chat"
+                        Clicked="OnAIChatClicked"
+                        BackgroundColor="Purple"
+                        TextColor="White" />
+
+                <!-- Upcoming Assignments -->
+                <Label Text="Upcoming Assignments:" 
+                       FontSize="Medium" 
+                       FontAttributes="Bold" 
+                       Margin="0,20,0,10" />
+
+                <!-- Assignment List -->
+                <CollectionView ItemsSource="{Binding UpcomingAssignments}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Title}" FontSize="Medium" />
+                                <Label Text="{Binding ThemeName}" FontSize="Small" TextColor="Gray" />
+                                <Label Text="{Binding Deadline, StringFormat='Due: {0:dd MMM yyyy}'}" FontSize="Small" TextColor="Gray" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Navigation Buttons -->
+        <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="White" Padding="10">
+            <Button Text="Home" HorizontalOptions="FillAndExpand" Clicked="OnHomeClicked" />
+            <Button Text="Upload" HorizontalOptions="FillAndExpand" Clicked="OnUploadClicked" />
+            <Button Text="Explore" HorizontalOptions="FillAndExpand" Clicked="OnExploreClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

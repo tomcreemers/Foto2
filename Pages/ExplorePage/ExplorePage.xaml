@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Foto2.Pages.ExplorePage"
+             Title="Explore">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+
+        <!-- Themes List -->
+        <CollectionView Grid.Row="0" ItemsSource="{Binding Themes}" SelectionMode="None" Margin="10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Gray" Padding="10" Margin="10" CornerRadius="10">
+                        <StackLayout>
+                            <!-- Theme Image -->
+                            <Image Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="150" />
+
+                            <!-- Theme Name and Description -->
+                            <Label Text="{Binding Name}" FontSize="Medium" FontAttributes="Bold" />
+                            <Label Text="{Binding Description}" FontSize="Small" TextColor="Gray" />
+
+                            <!-- Subscribe/Unsubscribe Button -->
+                            <Button Text="{Binding SubscribeButtonText}"
+                                    Command="{Binding BindingContext.ToggleSubscriptionCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                    CommandParameter="{Binding .}" />
+
+                            <!-- Assignments Button -->
+                            <Button Text="Assignments"
+                                    Command="{Binding BindingContext.NavigateToDetailCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                    CommandParameter="{Binding .}" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Navigation Buttons -->
+        <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="White" Padding="10">
+            <Button Text="Home" HorizontalOptions="FillAndExpand" Clicked="OnHomeClicked" />
+            <Button Text="Account" HorizontalOptions="FillAndExpand" Clicked="OnAccountClicked" />
+            <Button Text="Upload" HorizontalOptions="FillAndExpand" Clicked="OnUploadClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

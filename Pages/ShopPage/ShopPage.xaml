@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Foto2.Pages.ShopPage"
+             Title="Shop">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            <!-- Current Points -->
+            <Label Text="Your Points" FontSize="Large" FontAttributes="Bold" />
+            <Label Text="{Binding CurrentPoints}" FontSize="Medium" TextColor="Gray" />
+
+            <!-- Supermembership Status -->
+            <Label Text="Supermembership Status" FontSize="Large" FontAttributes="Bold" />
+            <Label Text="{Binding SuperMembershipStatus}" FontSize="Medium" TextColor="Gray" />
+
+            <!-- Buy Points Section -->
+            <Label Text="Buy Points" FontSize="Large" FontAttributes="Bold" Margin="0,20,0,10" />
+            <Button Text="Buy 1 Point for €1"
+                    Command="{Binding Buy1PointCommand}" />
+            <Button Text="Buy 10 Points for €7 (30% Discount!)"
+                    Command="{Binding Buy10PointsCommand}" />
+
+            <!-- Upgrade to Supermembership -->
+            <Label Text="Upgrade to Supermembership" FontSize="Large" FontAttributes="Bold" Margin="0,20,0,10" />
+            <Button Text="Subscribe for €5/month"
+                    Command="{Binding UpgradeToSuperMembershipCommand}" />
+
+            <!-- Go Back -->
+            <Button Text="Back to Account"
+                    Clicked="OnBackToAccountClicked"
+                    BackgroundColor="Gray" TextColor="White" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

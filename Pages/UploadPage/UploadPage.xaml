@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Foto2.Pages.UploadPage"
+             Title="Upload">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" /> <!-- Scrollable content -->
+            <RowDefinition Height="70" /> <!-- Fixed navigation buttons -->
+        </Grid.RowDefinitions>
+
+        <!-- Upload Form -->
+        <ScrollView Grid.Row="0" Padding="20">
+            <StackLayout Spacing="20">
+                <!-- Photo Preview -->
+                <Image x:Name="PhotoPreview" 
+                       HeightRequest="300" 
+                       WidthRequest="300" 
+                       BackgroundColor="LightGray"
+                       HorizontalOptions="Center" />
+
+                <!-- Select Photo Button -->
+                <Button Text="Select Photo" 
+                        Clicked="OnSelectPhotoClicked" 
+                        Style="{StaticResource PrimaryButtonStyle}" />
+
+                <!-- Select Theme -->
+                <Picker x:Name="ThemePicker" 
+                        Title="Select Theme" 
+                        ItemsSource="{Binding UserThemes}" 
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedIndexChanged="OnThemeSelected" />
+
+                <!-- Select Assignment -->
+                <Picker x:Name="AssignmentPicker" 
+                        Title="Select Assignment" 
+                        ItemsSource="{Binding Assignments}" 
+                        ItemDisplayBinding="{Binding Title}" />
+
+                <!-- Description -->
+                <Editor x:Name="DescriptionEditor" 
+                        Placeholder="Write a description..." 
+                        AutoSize="TextChanges"
+                        BackgroundColor="White" />
+
+                <!-- Upload Button -->
+                <Button Text="Upload" 
+                        Clicked="OnUploadClicked" 
+                        Style="{StaticResource PrimaryButtonStyle}" />
+
+                <!-- Ask AI Button -->
+                <Button Text="Ask the Picture Helper" 
+                        Clicked="OnAskAIButtonClicked"
+                        Style="{StaticResource SecondaryButtonStyle}" />
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Navigation Buttons -->
+        <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="White" Padding="10">
+            <Button Text="Home" HorizontalOptions="FillAndExpand" Clicked="OnHomeClicked" />
+            <Button Text="Account" HorizontalOptions="FillAndExpand" Clicked="OnAccountClicked" />
+            <Button Text="Explore" HorizontalOptions="FillAndExpand" Clicked="OnExploreClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

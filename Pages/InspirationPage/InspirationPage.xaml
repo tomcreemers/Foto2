@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Foto2.Pages.InspirationPage"
+             Title="Inspiration">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            <!-- Random Photo -->
+            <Image x:Name="RandomPhoto"
+                   HeightRequest="300"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Center" />
+
+            <!-- Fetch Button -->
+            <Button Text="Get Inspiration"
+                    Command="{Binding FetchRandomPhotoCommand}" />
+
+            <!-- Error Message -->
+            <Label x:Name="ErrorMessage"
+                   TextColor="Red"
+                   FontSize="Medium"
+                   IsVisible="False"
+                   HorizontalOptions="Center" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
