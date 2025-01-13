@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Foto2.Pages.AdminDashboardPage"
+             Title="Admin Dashboard">
+    <ScrollView>
+        <StackLayout Padding="10" Spacing="15">
+            <!-- Users Section -->
+            <Frame BorderColor="Gray" Padding="10">
+                <StackLayout>
+                    <Label Text="Users" FontSize="Large" FontAttributes="Bold" />
+                    <Button Text="{Binding ShowUsersText}" 
+                            Command="{Binding ToggleUsersCommand}" />
+                    <CollectionView ItemsSource="{Binding Users}" IsVisible="{Binding ShowUsers}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="5">
+                                    <Label Text="{Binding Username}" />
+                                    <Button Text="Delete" 
+                                            Command="{Binding BindingContext.DeleteUserCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                            CommandParameter="{Binding .}" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+
+            <!-- Themes Section -->
+            <Frame BorderColor="Gray" Padding="10">
+                <StackLayout>
+                    <Label Text="Themes" FontSize="Large" FontAttributes="Bold" />
+                    <Button Text="{Binding ShowThemesText}" 
+                            Command="{Binding ToggleThemesCommand}" />
+                    <CollectionView ItemsSource="{Binding Themes}" IsVisible="{Binding ShowThemes}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="5">
+                                    <Label Text="{Binding Name}" />
+                                    <Button Text="Delete" 
+                                            Command="{Binding BindingContext.DeleteThemeCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                            CommandParameter="{Binding .}" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+
+            <!-- Assignments Section -->
+            <Frame BorderColor="Gray" Padding="10">
+                <StackLayout>
+                    <Label Text="Assignments" FontSize="Large" FontAttributes="Bold" />
+                    <Button Text="{Binding ShowAssignmentsText}" 
+                            Command="{Binding ToggleAssignmentsCommand}" />
+                    <CollectionView ItemsSource="{Binding Assignments}" IsVisible="{Binding ShowAssignments}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="5">
+                                    <Label Text="{Binding Title}" />
+                                    <Button Text="Delete" 
+                                            Command="{Binding BindingContext.DeleteAssignmentCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                            CommandParameter="{Binding .}" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
